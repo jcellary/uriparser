@@ -11,15 +11,15 @@ class UriParserTest extends TestCase
      * Tests parsing of valid Uris
      *
      * @param $uri string Uri to parse
-     * @param $expected_fragments array fragments that are expected to be found in the uri
+     * @param $expectedFragments array fragments that are expected to be found in the uri
      *
      * @dataProvider validUris
      */
-    public function testSuccessfulParsing(string $uri, array $expected_fragments)
+    public function testSuccessfulParsing(string $uri, array $expectedFragments)
     {
-        $actual_fragments = URIParser::parseUri($uri);
+        $actualFragments = URIParser::parseUri($uri);
 
-        $this->assertEquals($expected_fragments, $actual_fragments);
+        $this->assertEquals($expectedFragments, $actualFragments);
     }
 
     /**
@@ -78,9 +78,9 @@ class UriParserTest extends TestCase
      */
     public function testUnsuccessfulParsing(string $uri)
     {
-        $actual_fragments = URIParser::parseUri($uri);
+        $actualFragments = URIParser::parseUri($uri);
 
-        $this->assertEmpty($actual_fragments);
+        $this->assertEmpty($actualFragments);
     }
 
     /**

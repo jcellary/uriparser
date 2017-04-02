@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Helpers\UriParser;
-
 
 /**
  * Helper class for parsing Uris
@@ -58,11 +56,10 @@ class UriParser
     private static function normalizeMatches(array $matches)
     {
         $result = [];
-        foreach ($matches as $key => $value)
-        {
-            $normalized_key = self::getKeyIfMatchStartsWithIt($key);
-            if ($normalized_key && !empty($value))
-                $result[$normalized_key] = $value;
+        foreach ($matches as $key => $value) {
+            $normalizedKey = self::getKeyIfMatchStartsWithIt($key);
+            if ($normalizedKey && !empty($value))
+                $result[$normalizedKey] = $value;
         }
 
         return $result;
@@ -70,24 +67,22 @@ class UriParser
 
     /**
      * Check if the provided key is equal to one of the valid key names or starts with it
-     * and returns the normlized version
+     * and returns the normalized version
      *
-     * @param $actual_key string group match name from the regexp
+     * @param $actualKey string group match name from the regexp
      *
-     * @return string $actual_key if it is a valid key name; it's truncated version if valid key is its substring or
+     * @return string $actualKey if it is a valid key name; it's truncated version if valid key is its substring or
      */
-    private static function getKeyIfMatchStartsWithIt(string $actual_key)
+    private static function getKeyIfMatchStartsWithIt(string $actualKey)
     {
-        foreach (self::MATCH_KEYS as $valid_key)
-        {
-            if (strlen($actual_key) < strlen($valid_key))
+        foreach (self::MATCH_KEYS as $validKey) {
+            if (strlen($actualKey) < strlen($validKey))
                 continue;
 
-            if (substr($actual_key, 0, strlen($valid_key)) === $valid_key)
-                return $valid_key;
+            if (substr($actualKey, 0, strlen($validKey)) === $validKey)
+                return $validKey;
         }
 
         return false;
     }
-
 }
